@@ -473,7 +473,7 @@ C/C++</a></td>
 </table>
 
 <hr>
-<p>If you prefer a single versio macro, you can define the following.
+<p>If you prefer a single version macro, you can define the following.
 <blockquote>
 <pre>#if defined(__GNUC__)
 # if defined(__GNU_PATCHLEVEL__)
@@ -539,10 +539,7 @@ aC++</a></td>
 <td>__HP_aCC
 <br>__cplusplus >= 199707L</td>
 
-<td>The __HP_aCC was introduced in version A.01.15 (and A.03.13), where
-it is set to 1. Beginning with version A.01.21 (and A.03.25) __HP_aCC is
-set as follows.
-<p>
+<td>
 <table BORDER=0 WIDTH="100%" >
 <tr>
 <td>__HP_aCC = VVRRPP</td>
@@ -578,6 +575,10 @@ set as follows.
 <td ALIGN=CENTER>012100</td>
 </tr>
 </table>
+<hr>
+<p>The __HP_aCC was introduced in version A.01.15 (and A.03.13), where
+it is set to 1. Beginning with version A.01.21 (and A.03.25) __HP_aCC is
+set as above.
 </td>
 </tr>
 
@@ -745,9 +746,7 @@ Codewarrior</a></td>
 
 <td>__MWERKS__</td>
 
-<td>Starting with CodeWarrior 7 __MWERKS__ is defined as follows (prior
-versions defined __MWERKS__ to 1).
-<p>
+<td>
 <table BORDER=0 WIDTH="100%" >
 <tr>
 <td>__MWERKS__ = 0xVRPP</td>
@@ -789,6 +788,9 @@ versions defined __MWERKS__ to 1).
 <td ALIGN=CENTER>0x2200</td>
 </tr>
 </table>
+<hr>
+<p>Starting with CodeWarrior 7 __MWERKS__ is defined as above (prior
+versions defined __MWERKS__ to 1).
 </td>
 </tr>
 
@@ -976,9 +978,7 @@ Workshop C/C++</a></td>
 <td>__SUNPRO_C
 <br>__SUNPRO_CC</td>
 
-<td>__SUNPRO_C is defined when compiling C, and __SUNPRO_CC when compiling
-C++.
-<p>
+<td>
 <table BORDER=0 WIDTH="100%" >
 <tr>
 <td>__SUNPRO_C = 0xVRP</td>
@@ -1022,6 +1022,9 @@ C++.
 </table>
 
 <hr>
+<p>__SUNPRO_C is defined when compiling C, and __SUNPRO_CC when compiling
+C++.
+
 <p>The version of the compiler can be determined from either of these macros,
 but is illustrated above for the __SUNPRO_C macro. It may be a good idea
 to define a version macro like this
@@ -1127,7 +1130,7 @@ typedef __int8 int8_t;
 </blockquote>
 
 <hr>
-$Id: precomp.html,v 1.1 2002/09/14 15:10:19 breese Exp $
+$Id: precomp.html,v 1.2 2002/09/14 15:17:03 breese Exp $
 
 </body>
 </html>
