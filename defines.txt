@@ -1,8 +1,8 @@
 #!/bin/sh
 
-# defines (originally what-defs)                            23 Jun 2003
+# defines (originally what-defs)                            29 Jun 2003
 # version:
-            v="3.2"
+            v="3.2.1"
 #
 # usage:  defines [-d] [-i] [cc-name [cc-opts]]
 #
@@ -42,10 +42,12 @@
 # Versions 3.2 and later are maintained by Bjørn Reese (breese at
 # users.sourceforge.net) and distributed via http://predef.sourceforge.net/ .
 #
-# post-3.18 changelog:
-#   3.2  20030622  Bjørn Reese   added sizes of pointer-to-object and
-#                                pointer-to-function
-
+# Changelog:
+#   3.2   20030622  Bjorn Reese
+#     * Added sizes of pointer-to-object and pointer-to-function.
+#
+#   3.2.1 20030629  Bjorn Reese
+#     * Using CHAR_BIT to calculate sizes.
 
 # parse options, if any (change "if" to "while" if add more options)
 
@@ -297,6 +299,10 @@ echo ""
 
 cat << END_O_DE_LINE | sed 's/\\\\/\\/g' > /tmp/def$$.c
 #include <stdio.h>
+#include <limits.h>
+#ifndef CHAR_BIT
+#define CHAR_BIT 8
+#endif
 main()
 {
     printf("Checking other possibilities; should already be listed above:\n");
@@ -325,20 +331,20 @@ main()
     printf("__TIME__\t= \\"%s\\"\n", __TIME__);
 #endif
     printf("\nSizes of basic variable types:\n");
-    printf("  sizeof(char)           = %d bits\n", 8*sizeof(char));
-    printf("  sizeof(short)          = %d bits\n", 8*sizeof(short));
-    printf("  sizeof(int)            = %d bits\n", 8*sizeof(int));
-    printf("  sizeof(long)           = %d bits\n", 8*sizeof(long));
+    printf("  sizeof(char)           = %d bits\n", CHAR_BIT*sizeof(char));
+    printf("  sizeof(short)          = %d bits\n", CHAR_BIT*sizeof(short));
+    printf("  sizeof(int)            = %d bits\n", CHAR_BIT*sizeof(int));
+    printf("  sizeof(long)           = %d bits\n", CHAR_BIT*sizeof(long));
 #ifdef _LONGLONG
-    printf("  sizeof(long long)      = %d bits\n", 8*sizeof(long long));
+    printf("  sizeof(long long)      = %d bits\n", CHAR_BIT*sizeof(long long));
 #endif
-    printf("  sizeof(float)          = %d bits\n", 8*sizeof(float));
-    printf("  sizeof(double)         = %d bits\n", 8*sizeof(double));
+    printf("  sizeof(float)          = %d bits\n", CHAR_BIT*sizeof(float));
+    printf("  sizeof(double)         = %d bits\n", CHAR_BIT*sizeof(double));
 #ifdef __STDC__
-    printf("  sizeof(long double)    = %d bits\n", 8*sizeof(long double));
+    printf("  sizeof(long double)    = %d bits\n", CHAR_BIT*sizeof(long double));
 #endif
-    printf("  sizeof(char *)         = %d bits\n", 8*sizeof(char *));
-    printf("  sizeof(char (*)(char)) = %d bits\n", 8*sizeof(char (*)(char)));
+    printf("  sizeof(char *)         = %d bits\n", CHAR_BIT*sizeof(char *));
+    printf("  sizeof(char (*)(char)) = %d bits\n", CHAR_BIT*sizeof(char (*)(char)));
 }
 END_O_DE_LINE
 
