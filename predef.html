@@ -12,9 +12,9 @@
 <h1>
 Pre-defined C/C++ Compiler Macros</h1></center>
 
-<table ALIGN=CENTER WIDTH="80%" >
-<tr>
-<td ALIGN=CENTER><b>Index</b></td>
+<center><table WIDTH="80%" NOSAVE >
+<tr NOSAVE>
+<td ALIGN=CENTER NOSAVE><b>Index</b></td>
 
 <td ALIGN=CENTER><a href="prestd.html">Standards</a></td>
 
@@ -24,7 +24,7 @@ Pre-defined C/C++ Compiler Macros</h1></center>
 
 <td ALIGN=CENTER><a href="prearch.html">Architecture</a></td>
 </tr>
-</table>
+</table></center>
 
 <hr>
 <p>Please send updates/corrections to
@@ -32,29 +32,67 @@ Pre-defined C/C++ Compiler Macros</h1></center>
 <h2>
 Table of Content</h2>
 
-<ul>
-<li>
-<a href="prestd.html">Standards</a></li>
+<blockquote>
+<table WIDTH="90%" NOSAVE >
+<tr NOSAVE>
+<td NOSAVE><a href="prestd.html">Standards</a></td>
 
-<li>
-<a href="precomp.html">Compilers</a></li>
+<td>Macros identifying standards (C/C++, X/OPEN, POSIX)</td>
+</tr>
 
-<li>
-<a href="preos.html">Operating Systems</a></li>
+<tr>
+<td><a href="precomp.html">Compilers</a></td>
 
-<li>
-<a href="prearch.html">Computer Architectures</a></li>
-</ul>
+<td>Macros identifying compilers and compiler versions.</td>
+</tr>
+
+<tr>
+<td><a href="preos.html">Operating Systems</a></td>
+
+<td>Macros identifying operating systems and operating environments.</td>
+</tr>
+
+<tr>
+<td><a href="prearch.html">Architectures</a></td>
+
+<td>Macros identifying hardware architectures.</td>
+</tr>
+
+<tr>
+<td>Appendix A: <a href="defines.txt">Defines script</a></td>
+
+<td>A Bourne shell script to print the names and values of pre-defined
+macros.</td>
+</tr>
+</table>
+</blockquote>
 
 <h2>
-Appedices</h2>
-
-<ul>
-<li>
-<a href="defines.txt">Defines script</a>. A Bourne shell script to print
-the names and values of pre-defined macros.</li>
-</ul>
-
+Introduction</h2>
+C and C++ compilers automatically defines certain macros that can be used
+to check for compiler or operating system features. This is important when
+writing portable software.
+<p>These pages lists various pre-defined compiler macros that can be used
+to identify standards, compiles, operating systems, and hardware architectures
+at compile-time.
+<p>For example, if we want to use a generic pointer type, we use void pointers.
+However, ancient K&amp;R compilers (from the time before the first ANSI
+C standard) do not support void pointers. Instead we can define our own
+type:
+<blockquote><tt>#if defined(__STDC__) || defined(__cplusplus) || defined(_MSC_EXTENSIONS)</tt>
+<br><tt>typedef void * t_pointer;</tt>
+<br><tt>#else</tt>
+<br><tt>typedef char * t_pointer;</tt>
+<br><tt>#endif</tt></blockquote>
+Another example, Microsoft Visual C++ version 4.2 added a pragma to reduce
+compilation times by only including a file once:
+<blockquote><tt>#if defined(_MSC_VER) &amp;&amp; (_MSC_VER >= 1020)</tt>
+<br><tt>#pragma once</tt>
+<br><tt>#endif</tt></blockquote>
+An often-used alternative is <a href="http://www.gnu.org/software/autoconf/">autoconf</a>,
+which is a more powerful tool to examine various types of features, including
+compilation options. However, autoconf is fairly Unix-centric, and requires
+a Unix layer on other platforms (e.g. Cygwin on Windows).
 <h2>
 References</h2>
 
@@ -110,7 +148,7 @@ Wlodzimierz ABX Skiba</li>
 </ul>
 
 <hr>
-<p>Copyright &copy; 2002 Bj&oslash;rn Reese
+<p>Copyright &copy; 2002-2003 Bj&oslash;rn Reese
 <p>Permission to use, copy, modify, and distribute this document for any
 purpose with or without fee is hereby granted, provided that the above
 copyright notice and this permission notice appear in all copies.
@@ -118,6 +156,6 @@ copyright notice and this permission notice appear in all copies.
 WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF MERCHANTIBILITY
 AND FITNESS FOR A PARTICULAR PURPOSE. THE AUTHORS AND CONTRIBUTORS ACCEPT
 NO RESPONSIBILITY IN ANY CONCEIVABLE MANNER.
-<p>$Id: predef.html,v 1.4 2003/02/17 17:58:01 breese Exp $
+<p>$Id: predef.html,v 1.5 2003/06/29 09:40:21 breese Exp $
 </body>
 </html>
