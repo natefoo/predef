@@ -2,7 +2,7 @@
 
 # defines (originally what-defs)                            29 Jun 2003
 # version:
-            v="3.2.1"
+            v="4.0"
 #
 # usage:  defines [-d] [-i] [cc-name [cc-opts]]
 #
@@ -39,14 +39,14 @@
 # Kjetil J|rgensen and others; original author unknown.  Versions 2.0 through
 # 3.18 maintained by GRR (newt at pobox.com & c/o zip-bugs at lists.wku.edu).
 #
-# Versions 3.2 and later are maintained by Bjørn Reese (breese at
+# Versions 4.0 and later are maintained by Bjørn Reese (breese at
 # users.sourceforge.net) and distributed via http://predef.sourceforge.net/ .
 #
 # Changelog:
-#   3.2   20030622  Bjorn Reese
+#   4.0  20030622  Bjorn Reese
 #     * Added sizes of pointer-to-object and pointer-to-function.
 #
-#   3.2.1 20030629  Bjorn Reese
+#   4.1  20030629  Bjorn Reese
 #     * Using CHAR_BIT to calculate sizes.
 
 # parse options, if any (change "if" to "while" if add more options)
