@@ -857,10 +857,41 @@ versions defined __MWERKS__ to 1).
 <td><a href="http://developer.apple.com/tools/mpw-tools/" target="_top">MPW
 C++</a></td>
 
-<td>applec</td>
+<td>__MRC__
+<br>MPW_C
+<br>MPW_CPLUS</td>
 
-<td>?</td>
+<td>
+<table BORDER=0 WIDTH="100%" >
+<tr>
+<td>__MRC__ = 0xVVRR</td>
+
+<td>VV = Version</td>
 </tr>
+
+<tr>
+<td></td>
+
+
+<td>RR = Revision</td>
+</tr>
+</table>
+
+<p>Examples
+<br>&nbsp;
+<table WIDTH="100%" >
+<tr>
+<th>MPW C++</th>
+
+<th>__MRC__</th>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>5.0</td>
+
+<td ALIGN=CENTER>0x500</td>
+</tr>
+</table>
 
 <tr VALIGN=TOP>
 <td><a href="http://msdn.microsoft.com/visualc/" target="_top">MS Visual
@@ -1130,7 +1161,7 @@ typedef __int8 int8_t;
 </blockquote>
 
 <hr>
-$Id: precomp.html,v 1.2 2002/09/14 15:17:03 breese Exp $
+$Id: precomp.html,v 1.3 2002/09/14 15:28:08 breese Exp $
 
 </body>
 </html>
