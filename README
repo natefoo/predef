@@ -18,7 +18,9 @@ Using autoconf type:
 
   #include <config.h>
   #if defined(HAVE_INTTYPES_H)
-  #include <inttypes.h>
+  #include <inttypes.h> /* strtoimax */
+  #else
+  #include <stdlib.h> /* strtol */
   #endif
 
   intmax_t my_atoimax(const char *text)
@@ -32,7 +34,10 @@ Using autoconf type:
 
 Using predef type:
 
-  #include <predef/inttypes.h>
+  #include <predef/inttypes.h> /* strtoimax */
+  #if !defined(PREDEF_HEADER_INTTYPES)
+  #include <stdlib.h> /* strtol */
+  #endif
 
   intmax_t my_atoimax(const char *text)
   {
