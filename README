@@ -7,8 +7,13 @@ file, and include the associated system header file. For example,
 instead of including <stdio.h>, you should include <predef/stdio.h>
 which will include <stdio.h> and set various macros.
 
-Example
--------
+All wrapper files depends on the <predef/predef.h> file. If single
+files are copied into the distribution of an application, then
+<predef/predef.h> must be copied as well.
+
+Example of use
+--------------
+
 Using autoconf type:
 
   #include <config.h>
