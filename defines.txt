@@ -1,0 +1,349 @@
+#!/bin/sh
+
+# defines (originally what-defs)                            23 Jun 2003
+# version:
+            v="3.2"
+#
+# usage:  defines [-d] [-i] [cc-name [cc-opts]]
+#
+# Print names and values of predefined cpp macros, plus sizes of basic
+# C variable types.  By default check standard "cc", but GNU C or another
+# compiler may be checked instead by giving "gcc" (or whatever) as an
+# argument (name only, no path).  If the first argument is the compiler
+# name, up to four additional arguments may be included as options for
+# the compiler to alter the preprocessor behavior.  Note that poking
+# through the preprocessor(s) may take a while (e.g., Cray scpp is 8MB)
+# and that cc on at least some systems (e.g., SCO) is executable but not
+# world-readable.  This version now fails gracefully if all compiler com-
+# ponents are unreadable by the user (thanks to James Birdsall for the
+# suggestion).
+#
+# With the -i option, defines will also check strings found in system header
+# files, at least some of which are likely to be predefined (Dan Quinlan
+# idea).  This can be very slow, however, and might cause overflows on some
+# systems.
+#
+# The -d option turns on debugging output; it shows what binaries are being
+# searched, which may indicate the source of the problem if some of the
+# standard macros aren't found ("... should already be listed above").
+#
+# defines uses the following more-or-less standard Unix utilities:
+#
+#    /bin/sh [echo, test]  date  uname  sed  strings  tr  sort  rm  cat
+#
+# plus, of course, the C preprocessor and compiler.  "date" and "uname"
+# are used only for identifying info and may be omitted (Convex doesn't
+# have the latter, for example).
+#
+# Written by Robert Skinner, Skip Montanaro, Greg Roelofs, John Bush,
+# Kjetil J|rgensen and others; original author unknown.  Versions 2.0 through
+# 3.18 maintained by GRR (newt at pobox.com & c/o zip-bugs at lists.wku.edu).
+#
+# Versions 3.2 and later are maintained by Bjørn Reese (breese at
+# users.sourceforge.net) and distributed via http://predef.sourceforge.net/ .
+#
+# post-3.18 changelog:
+#   3.2  20030622  Bjørn Reese   added sizes of pointer-to-object and
+#                                pointer-to-function
+
+
+# parse options, if any (change "if" to "while" if add more options)
+
+DEBUG=" > /dev/null"
+doincl=false
+while [ $# -ne 0 ]; do
+    case "$1" in
+        -d)   DEBUG=""
+              shift ;;
+        -i)   doincl=true
+              shift ;;
+        *)    break ;;
+    esac
+done
+
+
+# print some helpful identifying info for those who collect these things
+
+echo \
+  'This is output from `defines'"' version $v, from your buddies at Newtware!"
+date
+
+
+# search the path for uname and strings (apparently "which" is broken in some
+# versions of Ultrix, and "test" does not accept the -x option)
+
+path="`echo $PATH | sed -e 's/:/ /g'`"
+unpath=`for dir in $path ; do
+    if [ -r $dir/uname ]; then
+        echo $dir/uname
+        exit
+    fi
+done`
+if [ "$unpath" != "" ]; then
+    $unpath -a
+else
+    echo "[no uname command]"
+fi
+strpath=`for dir in $path ; do
+    if [ -r $dir/strings ]; then
+        echo $dir/strings
+        exit
+    fi
+done`
+
+if [ "$1" != "" ]; then
+    if [ "`basename $1`" != "$1" ]; then
+        cc=`basename $1`
+        ccpath=`dirname $1`
+        path="$path $ccpath"
+    else
+        cc=$1
+    fi
+    echo "cc = [$*]"
+    shift
+else
+    cc=cc
+    echo "cc = [$cc]"
+fi
+echo ""
+
+
+# this is the start of a *really big* if-block; look for "END IF-BLOCK 1"
+# about 135 lines down...
+
+if [ "$strpath" = "" ]; then
+    echo "$0:  error: no "'`'"strings' command...giving up."
+else
+
+
+# search the path for the compiler
+
+if [ "$ccpath" = "" ]; then
+    ccpath=`for dir in $path ; do
+        if [ -r $dir/$cc ]; then
+            echo $dir
+            exit
+        fi
+    done`
+fi
+eval 'echo "debug:  ccpath = [$ccpath]"'"$DEBUG"
+if [ "$ccpath" = "" ]; then
+    echo "$0:  warning: $cc unreadable (can't search for strings)"
+fi
+
+
+# create a list of possible preprocessors; cd into /tmp now to avoid
+# problems with "." in path during "cc -v" compilation
+#   $dir/$cc/*cpp    :  Convex cc; *not* caught by "cc -v":  no -v option
+#   $dir/SC*/*comp   :  SunOS acc; caught by "cc -v" test below
+#   /etc/*.cfg       :  AIX C Set++ config file; caught by "cc -v"?
+#   /usr/lpp/xlc/bin :  AIX C Set++; not caught by "cc -v" (apparently)
+#   $dir/cpp.ansi    :  HP-UX
+#   /usr/lib/cmplrs/<compiler>/{decc,driver,cfe} : DEC Ultrix and OSF/1;
+  
+cd /tmp
+cpp=`for file in /etc/*.cfg ; do
+    if [ -r $file ]; then
+        echo $file
+    fi
+done
+for dir in $path /lib /usr/lib /usr/local/lib /usr/lib/cmplrs/$cc /usr/lpp/$cc/bin ; do
+    for file in $dir/*cpp* $dir/*cc $dir/*comp $dir/$cc/*cpp ; do
+        if [ -r $file ]; then
+            echo $file
+        fi
+    done
+    # these are Ultrix- and AIX-specific, sigh:
+    for file in $dir/driver $dir/cfe $dir/xlc* ; do
+        if [ -r $file ]; then
+            echo $file
+        fi
+    done
+done`
+eval 'echo "debug:  cpp = [$cpp]"'"$DEBUG"
+if [ "$cpp" = "" ]; then
+    echo "$0:  warning: preprocessor(s) unreadable (can't search for strings)"
+fi
+
+
+# grab all possible compiler components out of "cc -v" output (catches GNU
+# cpp and Sun acomp, in particular) and "cc -#" output (catches DNIX cc and
+# dcc; others?).  awkward tr syntax is required due to incompatibilities
+# between behaviors of different vendors' versions, e.g., Convex and SGI
+# (generic BSD/SysV problem?)
+
+echo "int i;" > /tmp/def$$.c
+ccv=`2>&1 $ccpath/$cc -v -c /tmp/def$$.c |
+  tr ' \009()<>,;:&|' '\012\012\012\012\012\012\012\012\012\012\012' |
+  grep '^/' |
+  grep -v '/tmp/' |
+  grep -v '\.o$' |
+  sort -u`
+eval 'echo "debug:  ccv = [$ccv]"'"$DEBUG"
+ccv2=`2>&1 $ccpath/$cc -# -c /tmp/def$$.c |
+  tr ' \009()<>,;:&|' '\012\012\012\012\012\012\012\012\012\012\012' |
+  grep '^/' |
+  grep -v '/tmp/' |
+  grep -v '\.o$' |
+  sort -u`
+eval 'echo "debug:  ccv2 = [$ccv2]"'"$DEBUG"
+cleanccv=`for file in $ccv $ccv2 ; do
+    if [ -r $file -a ! -d $file ]; then
+        echo $file
+    fi
+done`
+eval 'echo "debug:  cleanccv = [$cleanccv]"'"$DEBUG"
+# temp files used again for stropts, below
+
+
+# if requested, grab header files, too:  even if all compiler components
+# unreadable, system header files should reference at least some of the
+# predefined macros [drawback:  potentially very slow; may increase number
+# of strings tested by more than an order of magnitude]
+
+if [ $doincl = true ]; then
+    incl=`for dir in /usr/*include/ /usr/*include/*/ ; do
+        for file in $dir/*.h ; do
+            if [ -r $file ]; then
+                echo $file
+            fi
+        done
+    done | sed 's#//#/#g'`
+else
+    incl=
+fi
+eval 'echo "debug:  incl = [$incl]"'"$DEBUG"
+
+
+# if nothing is readable, no point in continuing:  strings would hang (this
+# is the start of another big if-block; look for "END IF-BLOCK 2" about 50
+# lines down)
+
+all=`echo $ccpath/$cc $cpp $cleanccv $incl | tr ' ' '\012' | sort -u`
+eval 'echo "debug:  all = [$all]"'"$DEBUG"
+if [ "$all" = "" ]; then
+    echo "$0:  error: all compiler components unreadable...giving up."
+else
+
+
+# figure out proper "strings" options for searching entire executable with
+# minimum string-length 2
+
+stropt1="-a"
+2>&1 $strpath $stropt1 /tmp/def$$.c > /dev/null
+if [ $? -ne 0 ]; then
+    stropt1="-"
+    2>&1 $strpath $stropt1 /tmp/def$$.c > /dev/null
+    if [ $? -ne 0 ]; then
+        # Coherent (`uname -v` = "COHERENT") doesn't have *either* option
+        stropt1=""
+    fi
+fi
+eval 'echo "debug:  stropt1 = [$stropt1]"'"$DEBUG"
+
+# some versions of GNU strings (e.g., 2.4) have a nasty bug wherein "-2" is
+# interpreted as "-50" or something; therefore try "-n 2" version first
+
+stropt2="-n 2"
+2>&1 $strpath $stropt2 /tmp/def$$.c > /dev/null
+if [ $? -ne 0 ]; then
+    stropt2="-2"
+    # GRR:  I trust there's no version so pathetic it doesn't have a min-length
+fi
+eval 'echo "debug:  stropt2 = [$stropt2]"'"$DEBUG"
+
+stropts="$stropt1 $stropt2"
+eval 'echo "debug:  stropts = [$stropts]"'"$DEBUG"
+rm -f /tmp/def$$.c /tmp/def$$.o
+
+
+# create a pseudo-C "program" with every possible #ifdef included; quote
+# each macro once to avoid expansion, then print it again to get its value.
+# (the "char foo" shenanigans are necessary to work around a bug in the
+# brain-damaged NeXT preprocessor; and DNIX has a broken sort, so an extra
+# "sort | " should be prepended to the "sort -u" line)
+
+# [GRR:  could also write "cc -v" output to tmp file and add that to
+# strings list...]
+
+$strpath $stropts $all |
+tr -s " =:;,{}" '\012\012\012\012\012\012\012' |
+sed -e 's/^-D//' |
+sed -n '/^[a-zA-Z_][a-zA-Z0-9_]*$/p' |
+sort -u |
+sed 's/^.*$/#ifdef &\
+char foo[] = "%&"	= &;\
+#endif/' > /tmp/def$$.c
+
+
+# preprocess the "program" to figure out which of the possible macros are real
+
+$ccpath/$cc $1 $2 $3 $4 -E /tmp/def$$.c |
+  sed -n '/^char.*"%/s///p' |
+  sed -e 's/"//' -e 's/;//'
+rm -f /tmp/def$$.c
+
+
+fi   # END IF-BLOCK 2
+fi   # END IF-BLOCK 1
+#-----------------------------------------------------------------------------
+
+echo ""
+
+
+# compile another program to check for oversights and get sizes of basic types
+# (the \\" combos around the %s fields and the sed-backslash command are re-
+# quired to work around Coherent bug:  plain \" loses backslash)
+
+cat << END_O_DE_LINE | sed 's/\\\\/\\/g' > /tmp/def$$.c
+#include <stdio.h>
+main()
+{
+    printf("Checking other possibilities; should already be listed above:\n");
+#ifdef __COHERENT__
+    printf("__COHERENT__\t= 0x%04x (when stdio.h #included)\n", __COHERENT__);
+#endif
+#ifdef __ANSI__
+    printf("__ANSI__\t= %d\n", __ANSI__);
+#endif
+#ifdef __DATE__
+    printf("__DATE__\t= \\"%s\\"\n", __DATE__);
+#endif
+#ifdef __FILE__
+    printf("__FILE__\t= \\"%s\\"\n", __FILE__);
+#endif
+#ifdef __GNUC__
+    printf("__GNUC__\t= %d\n", __GNUC__);
+#endif
+#ifdef __LINE__
+    printf("__LINE__\t= %d\n", __LINE__);
+#endif
+#ifdef __STDC__
+    printf("__STDC__\t= %d\n", __STDC__);
+#endif
+#ifdef __TIME__
+    printf("__TIME__\t= \\"%s\\"\n", __TIME__);
+#endif
+    printf("\nSizes of basic variable types:\n");
+    printf("  sizeof(char)           = %d bits\n", 8*sizeof(char));
+    printf("  sizeof(short)          = %d bits\n", 8*sizeof(short));
+    printf("  sizeof(int)            = %d bits\n", 8*sizeof(int));
+    printf("  sizeof(long)           = %d bits\n", 8*sizeof(long));
+#ifdef _LONGLONG
+    printf("  sizeof(long long)      = %d bits\n", 8*sizeof(long long));
+#endif
+    printf("  sizeof(float)          = %d bits\n", 8*sizeof(float));
+    printf("  sizeof(double)         = %d bits\n", 8*sizeof(double));
+#ifdef __STDC__
+    printf("  sizeof(long double)    = %d bits\n", 8*sizeof(long double));
+#endif
+    printf("  sizeof(char *)         = %d bits\n", 8*sizeof(char *));
+    printf("  sizeof(char (*)(char)) = %d bits\n", 8*sizeof(char (*)(char)));
+}
+END_O_DE_LINE
+
+$ccpath/$cc $1 $2 $3 $4 -o /tmp/def$$ /tmp/def$$.c
+/tmp/def$$
+rm -f /tmp/def$$.c /tmp/def$$
+
+exit 0
