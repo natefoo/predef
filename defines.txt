@@ -1,8 +1,8 @@
 #!/bin/sh
 
-# defines (originally what-defs)                            29 Jun 2003
+# defines (originally what-defs)                            30 Nov 2003
 # version:
-            v="4.0"
+            v="4.1.1"
 #
 # usage:  defines [-d] [-i] [cc-name [cc-opts]]
 #
@@ -36,8 +36,8 @@
 # have the latter, for example).
 #
 # Written by Robert Skinner, Skip Montanaro, Greg Roelofs, John Bush,
-# Kjetil J|rgensen and others; original author unknown.  Versions 2.0 through
-# 3.18 maintained by GRR (newt at pobox.com & c/o zip-bugs at lists.wku.edu).
+# Kjetil Jørgensen and others; original author unknown.  Versions 2.0 through
+# 3.18 maintained by GRR (newt at pobox.com).
 #
 # Versions 4.0 and later are maintained by Bjørn Reese (breese at
 # users.sourceforge.net) and distributed via http://predef.sourceforge.net/ .
@@ -48,6 +48,10 @@
 #
 #   4.1  20030629  Bjorn Reese
 #     * Using CHAR_BIT to calculate sizes.
+#
+#   4.1.1  20031130  Greg Roelofs
+#     * Added some GCC-specific "long long" macros (note:  uses defined(),
+#       not ifdef--break into four-level nested block to support K&R compilers)
 
 # parse options, if any (change "if" to "while" if add more options)
 
@@ -335,7 +339,7 @@ main()
     printf("  sizeof(short)          = %d bits\n", CHAR_BIT*sizeof(short));
     printf("  sizeof(int)            = %d bits\n", CHAR_BIT*sizeof(int));
     printf("  sizeof(long)           = %d bits\n", CHAR_BIT*sizeof(long));
-#ifdef _LONGLONG
+#if defined(_LONGLONG) || defined(__USE_ISOC99) || defined(__GLIBC_HAVE_LONG_LONG) || defined(LLONG_MAX)
     printf("  sizeof(long long)      = %d bits\n", CHAR_BIT*sizeof(long long));
 #endif
     printf("  sizeof(float)          = %d bits\n", CHAR_BIT*sizeof(float));
