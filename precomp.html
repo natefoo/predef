@@ -12,7 +12,7 @@
 <h1>
 Pre-defined C/C++ Compiler Macros</h1></center>
 
-<table ALIGN=CENTER WIDTH="80%">
+<table WIDTH="80%" >
 <tr>
 <td ALIGN=CENTER><a href="index.php">Index</a></td>
 
@@ -27,7 +27,6 @@ Pre-defined C/C++ Compiler Macros</h1></center>
 </table>
 
 <hr>
-
 <h2>
 Compilers</h2>
 Most compilers defines macros to indicate the compiler and its version.
@@ -533,11 +532,11 @@ The syntax of this new macro is:
 </tr>
 
 <tr VALIGN=TOP>
-<td><a href="http://devresource.hp.com/devresource/Tools/lang.html" target="_top">HP ANSI C / aC++</a></td>
+<td><a href="http://devresource.hp.com/devresource/Tools/lang.html" target="_top">HP
+ANSI C / aC++</a></td>
 
 <td>__HP_cc
-<br>__HP_aCC
-</td>
+<br>__HP_aCC</td>
 
 <td>
 <table BORDER=0 WIDTH="100%" >
@@ -575,13 +574,13 @@ The syntax of this new macro is:
 <td ALIGN=CENTER>012100</td>
 </tr>
 </table>
+
 <hr>
-<p>The __HP_aCC macro was introduced in version A.01.15 (and A.03.13), where
-it is set to 1. Beginning with version A.01.21 (and A.03.25) __HP_aCC is
-set as above.
-<p>The C compiler defines the __HP_cc macro, and the C++ compiler the
-__HP_aCC macro.
-</td>
+<p>The __HP_aCC macro was introduced in version A.01.15 (and A.03.13),
+where it is set to 1. Beginning with version A.01.21 (and A.03.25) __HP_aCC
+is set as above.
+<p>The C compiler defines the __HP_cc macro, and the C++ compiler the __HP_aCC
+macro.</td>
 </tr>
 
 <tr VALIGN=TOP>
@@ -731,12 +730,11 @@ C++</a></td>
 <td ALIGN=CENTER>4004</td>
 </tr>
 </table>
+
 <hr>
 <p>Please note that Intel has has
-<a href="http://developer.intel.com/software/products/kcc/announcement.htm" target="_top">
-discontinued</a>
-development of the KAI C++ compiler in spring 2002.
-</td>
+<a href="http://developer.intel.com/software/products/kcc/announcement.htm" target="_top">discontinued</a>
+development of the KAI C++ compiler in spring 2002.</td>
 </tr>
 
 <tr VALIGN=TOP>
@@ -795,10 +793,10 @@ Codewarrior</a></td>
 <td ALIGN=CENTER>0x2200</td>
 </tr>
 </table>
+
 <hr>
-<p>Starting with CodeWarrior 7 __MWERKS__ is defined as above (prior
-versions defined __MWERKS__ to 1).
-</td>
+<p>Starting with CodeWarrior 7 __MWERKS__ is defined as above (prior versions
+defined __MWERKS__ to 1).</td>
 </tr>
 
 <tr VALIGN=TOP>
@@ -879,7 +877,6 @@ C++</a></td>
 <tr>
 <td></td>
 
-
 <td>RR = Revision</td>
 </tr>
 </table>
@@ -899,6 +896,8 @@ C++</a></td>
 <td ALIGN=CENTER>0x500</td>
 </tr>
 </table>
+</td>
+</tr>
 
 <tr VALIGN=TOP>
 <td><a href="http://msdn.microsoft.com/visualc/" target="_top">MS Visual
@@ -1001,6 +1000,62 @@ so it cannot be used by the preprocessor to compare versions.&nbsp;
 </tr>
 
 <tr VALIGN=TOP>
+<td><a href="http://www.sas.com/products/sasc/">SAS/C</a></td>
+
+<td>SASC
+<br>__SASC
+<br>__SASC__</td>
+
+<td>
+<table WIDTH="100%" >
+<tr>
+<td>__SASC__ = VRR
+<br>__VERSION__ =V
+<br>__REVISION__ = RR</td>
+
+<td>V = Version
+<br>RR = Revision</td>
+</tr>
+</table>
+
+<p>Examples
+<blockquote>&nbsp;
+<table WIDTH="90%">
+<tr>
+<th>SAS/C</th>
+
+<th>__SASC__</th>
+
+<th>__VERSION__</th>
+
+<th>__REVISION__</th>
+</tr>
+
+<tr ALIGN=CENTER>
+<td>5.10</td>
+
+<td></td>
+
+<td>5</td>
+
+<td NOSAVE>10</td>
+</tr>
+
+<tr ALIGN=CENTER>
+<td>6.50</td>
+
+<td>650</td>
+
+<td></td>
+
+<td></td>
+</tr>
+</table>
+</blockquote>
+</td>
+</tr>
+
+<tr VALIGN=TOP>
 <td><a href="http://www.caldera.com/products/unixware/udk.html" target="_top">SCO
 OpenServer</a></td>
 
@@ -1061,8 +1116,7 @@ Workshop C/C++</a></td>
 
 <hr>
 <p>__SUNPRO_C is defined when compiling C, and __SUNPRO_CC when compiling
-C++.
-
+C++.&nbsp;
 <p>The version of the compiler can be determined from either of these macros,
 but is illustrated above for the __SUNPRO_C macro. It may be a good idea
 to define a version macro like this
@@ -1072,7 +1126,6 @@ to define a version macro like this
 &nbsp;&nbsp;&nbsp;&nbsp; # define __SUNPRO_VERSION __SUNPRO_CC
 &nbsp;&nbsp;&nbsp;&nbsp; #endif
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</pre>
-
 </td>
 </tr>
 
@@ -1167,8 +1220,6 @@ typedef __int8 int8_t;
 # endif</pre>
 </blockquote>
 
-<hr>
-$Id: precomp.html,v 1.4 2003/02/16 13:30:18 breese Exp $
-
+<hr>$Id: precomp.html,v 1.5 2003/06/29 09:36:23 breese Exp $
 </body>
 </html>
