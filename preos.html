@@ -1,0 +1,942 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="generator" content="DocBook XSL Stylesheets V1.40">
+   <meta name="GENERATOR" content="Mozilla/4.51 [en] (X11; I; Linux 2.2.7 i686) [Netscape]">
+   <title>Pre-defined C/C++ Compiler Macros</title>
+</head>
+<body>
+
+<center>
+<h1>
+Pre-defined C/C++ Compiler Macros</h1></center>
+
+<table ALIGN=CENTER WIDTH="80%">
+<tr>
+<td ALIGN=CENTER><a href="predef.html">Index</a></td>
+
+<td ALIGN=CENTER><a href="prestd.html">Standards</a></td>
+
+<td ALIGN=CENTER><a href="precomp.html">Compilers</a></td>
+
+<td ALIGN=CENTER><b>Operating Systems</b></td>
+
+<td ALIGN=CENTER><a href="prearch.html">Architecture</a></td>
+</tr>
+</table>
+
+<hr>
+
+<h2>
+Operating Systems</h2>
+Incomplete.
+<blockquote>&nbsp;
+<table BORDER >
+<tr>
+<th>Name</th>
+
+<th>Macro</th>
+
+<th>Comment</th>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.ibm.com/servers/aix/" target="_top">AIX</a></td>
+
+<td>
+<table BORDER=0 WIDTH="100%" >
+<tr>
+<td>_AIX</td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>__TOS_AIX__</td>
+
+<td>[__xlC__]</td>
+</tr>
+</table>
+</td>
+
+<td>If _AIX is defined, then the following macros can be used to determine
+the version. Please note that the macros indicates the mentioned version
+or higher. For example, if _AIX43 is defined, then _AIX41 will also be
+defined.&nbsp;
+<table WIDTH="100%" >
+<tr>
+<th>AIX</th>
+
+<th>Macro</th>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>3.2.x</td>
+
+<td ALIGN=CENTER>_AIX3, _AIX32</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>4.1</td>
+
+<td ALIGN=CENTER>_AIX41</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>4.3</td>
+
+<td ALIGN=CENTER>_AIX43</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.amiga.com/" target="_top">AmigaOS</a></td>
+
+<td>
+<table BORDER=0 WIDTH="100%" >
+<tr>
+<td>AMIGA</td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>__amigaos__</td>
+
+<td>[__GNUC__]</td>
+</tr>
+</table>
+</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.openbeos.org/" target="_top">BEOS</a></td>
+
+<td>__BEOS__</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.bsdi.com/" target="_top">BSD/OS</a></td>
+
+<td>
+<table BORDER=0 >
+<tr>
+<td>bsdi</td>
+</tr>
+
+<tr>
+<td>__bsdi__</td>
+</tr>
+</table>
+</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.cray.com/products/software/unicos.html" target="_top">Cray
+Unicos</a></td>
+
+<td>
+<table BORDER=0 >
+<tr>
+<td>_UNICOS</td>
+</tr>
+
+<tr>
+<td>_CRAY</td>
+</tr>
+</table>
+</td>
+
+<td>
+<table BORDER=0 WIDTH="100%" >
+<tr>
+<td>_UNICOS = V</td>
+
+<td>V = Version</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www-csc.dg.com/csc/dguxfaqs1.asp" target="_top">DG/UX</a></td>
+
+<td>
+<table BORDER=0 >
+<tr>
+<td>DGUX</td>
+</tr>
+
+<tr>
+<td>__DGUX__</td>
+</tr>
+
+<tr>
+<td>__dgux__</td>
+</tr>
+</table>
+</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.sequent.com/products/software/operatingsys/dynix.html" target="_top">DYNIX/ptx</a></td>
+
+<td>
+<table BORDER=0 >
+<tr>
+<td>_SEQUENT_</td>
+</tr>
+
+<tr>
+<td>sequent</td>
+</tr>
+</table>
+</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.freebsd.org/" target="_top">FreeBSD</a></td>
+
+<td>__FreeBSD__</td>
+
+<td>Use the BSD macro if feasible.
+<p>The __FreeBSD__ macro determines the major version number.&nbsp;
+<table WIDTH="100%" >
+<tr>
+<th>FreeBSD</th>
+
+<th>__FreeBSD__</th>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>1.x</td>
+
+<td ALIGN=CENTER>1</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>2.x</td>
+
+<td ALIGN=CENTER>2</td>
+</tr>
+</table>
+
+<p>The __FreeBSD_version macro determines the entire version number (this
+macro must be included from &lt;osreldate.h>).
+<p>Examples
+<br>&nbsp;
+<table WIDTH="100%" >
+<tr>
+<th>FreeBSD</th>
+
+<th>__FreeBSD_version</th>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>2.0-RELEASE</td>
+
+<td ALIGN=CENTER>119411</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>2.2-RELEASE</td>
+
+<td ALIGN=CENTER>220000</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>3.0-RELEASE</td>
+
+<td ALIGN=CENTER>300005</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>4.0-RELEASE</td>
+
+<td ALIGN=CENTER>400017</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>4.5-RELEASE</td>
+
+<td ALIGN=CENTER>450000</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.hp.com/products1/unix/operating/" target="_top">HP/UX</a></td>
+
+<td>
+<table BORDER=0 WIDTH="100%" >
+<tr>
+<td>hpux</td>
+
+<td>[__GNUC__]</td>
+</tr>
+
+<tr>
+<td>__hpux</td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>_HPUX_SOURCE</td>
+
+<td></td>
+</tr>
+</table>
+</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.gnu.org/software/hurd/" target="_top">Hurd</a></td>
+
+<td>__GNU__</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.sgi.com/developers/technology/irix.html" target="_top">IRIX</a></td>
+
+<td>
+<table BORDER=0 >
+<tr>
+<td>sgi</td>
+</tr>
+
+<tr>
+<td>mips</td>
+</tr>
+
+<tr>
+<td>_SGI_SOURCE</td>
+</tr>
+</table>
+</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.linuxhq.com/" target="_top">Linux</a></td>
+
+<td>
+<table BORDER=0 >
+<tr>
+<td>linux</td>
+</tr>
+
+<tr>
+<td>__linux</td>
+</tr>
+</table>
+</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.apple.com/macosx/" target="_top">Mac OS 9</a></td>
+
+<td>
+<table BORDER=0 >
+<tr>
+<td>macintosh</td>
+</tr>
+
+<tr>
+<td>Macintosh</td>
+</tr>
+</table>
+</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.apple.com/macosx/" target="_top">Mac OS X</a></td>
+
+<td>
+<table BORDER=0 WIDTH="100%" >
+<tr>
+<td>__MACOSX__</td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>__APPLE__</td>
+
+<td>[__GNUC__]</td>
+</tr>
+</table>
+</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.hp.com/products1/mpeix/" target="_top">MPE/iX</a></td>
+
+<td>
+<table BORDER=0 >
+<tr>
+<td>mpeix</td>
+</tr>
+
+<tr>
+<td>__mpexl</td>
+</tr>
+</table>
+</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://directory.google.com/Top/Computers/Software/Operating_Systems/x86/DOS/" target="_top">MSDOS</a></td>
+
+<td>
+<table BORDER=0 >
+<tr>
+<td>MSDOS</td>
+</tr>
+
+<tr>
+<td>__MSDOS__</td>
+</tr>
+
+<tr>
+<td>_MSDOS</td>
+</tr>
+
+<tr>
+<td>__DOS__</td>
+</tr>
+</table>
+</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.netbsd.org/" target="_top">NetBSD</a></td>
+
+<td>__NetBSD__</td>
+
+<td>Use the BSD macro if feasible.
+<p>Version is defined with a macro in &lt;sys/param.h>&nbsp;
+<table WIDTH="100%" >
+<tr>
+<th>NetBSD</th>
+
+<th>Macro</th>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>0.8</td>
+
+<td ALIGN=CENTER>NetBSD0_8</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>0.9</td>
+
+<td ALIGN=CENTER>NetBSD0_9</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>1.0</td>
+
+<td ALIGN=CENTER>NetBSD1_0 = 1</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>1.0A</td>
+
+<td ALIGN=CENTER>NetBSD1_0 = 2</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.openbsd.org/" target="_top">OpenBSD</a></td>
+
+<td>__OpenBSD__</td>
+
+<td>Use the BSD macro if feasible.
+<p>Version is defined with a macro in &lt;sys/param.h>&nbsp;
+<table WIDTH="100%" >
+<tr>
+<th>Version</th>
+
+<th>Macro</th>
+
+<th>OpenBSD</th>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>3.1</td>
+
+<td ALIGN=CENTER>OpenBSD3_1</td>
+
+<td ALIGN=CENTER>200206</td>
+</tr>
+</table>
+
+<dl>
+<dt>
+<a NAME="id2713266"></a><span class="term">3.1</span></dt>
+</dl>
+</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.ibm.com/software/os/warp/" target="_top">OS/2</a></td>
+
+<td>
+<table BORDER=0 >
+<tr>
+<td>OS2</td>
+</tr>
+
+<tr>
+<td>_OS2</td>
+</tr>
+
+<tr>
+<td>__OS2__</td>
+</tr>
+
+<tr>
+<td>__TOS_OS2__</td>
+</tr>
+</table>
+</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.tru64unix.compaq.com/" target="_top">OSF/1</a></td>
+
+<td>
+<table BORDER=0 >
+<tr>
+<td>__osf__</td>
+</tr>
+
+<tr>
+<td>__osf</td>
+</tr>
+</table>
+</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="" target="_top">Pyramid DC/OS</a></td>
+
+<td>pyr</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.qnx.com/" target="_top">QNX</a></td>
+
+<td>
+<table BORDER=0 >
+<tr>
+<td>__QNX__</td>
+</tr>
+
+<tr>
+<td>__QNXNTO__</td>
+</tr>
+</table>
+</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://manuals.fujitsu-siemens.com:80/dynaweb/english/unixe/ru_en" target="_top">Reliant
+UNIX</a></td>
+
+<td>sinix</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.caldera.com/support/docs/openserver/" target="_top">SCO
+OpenServer</a></td>
+
+<td>
+<table BORDER=0 WIDTH="100%" >
+<tr>
+<td>M_I386</td>
+
+<td>[__GNUC__]</td>
+</tr>
+
+<tr>
+<td>M_XENIX</td>
+
+<td>[__GNUC__]</td>
+</tr>
+
+<tr>
+<td>__SCO_DS</td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>__SCO_C_DIALECT</td>
+
+<td></td>
+</tr>
+</table>
+</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.sun.com/solaris/" target="_top">Solaris</a></td>
+
+<td>
+<table BORDER=0 >
+<tr>
+<td>sun</td>
+</tr>
+
+<tr>
+<td>__sun</td>
+</tr>
+
+<tr>
+<td>__SUNPRO_C</td>
+</tr>
+</table>
+</td>
+
+<td>Use the SVR4 macros to distinguish between Solaris and SunOS.
+<pre>&nbsp;&nbsp;&nbsp;&nbsp; #if defined(sun) || defined(__sun)
+&nbsp;&nbsp;&nbsp;&nbsp; # if defined(__SVR4) || defined(__svr4__)
+&nbsp;&nbsp;&nbsp;&nbsp; /* Solaris */
+&nbsp;&nbsp;&nbsp;&nbsp; # else
+&nbsp;&nbsp;&nbsp;&nbsp; /* SunOS */
+&nbsp;&nbsp;&nbsp;&nbsp; # endif
+&nbsp;&nbsp;&nbsp;&nbsp; #endif
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</pre>
+</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="" target="_top">Ultrix</a></td>
+
+<td>
+<table BORDER=0 >
+<tr>
+<td>ultrix</td>
+</tr>
+
+<tr>
+<td>__ultrix</td>
+</tr>
+
+<tr>
+<td>__ultrix__</td>
+</tr>
+
+<tr>
+<td>unix &amp; vax</td>
+</tr>
+</table>
+</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://docsrv.caldera.com/" target="_top">UnixWare</a></td>
+
+<td>
+<table BORDER=0 >
+<tr>
+<td>sco</td>
+</tr>
+
+<tr>
+<td>_UNIXWARE7</td>
+</tr>
+</table>
+</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.openvms.compaq.com/" target="_top">VMS</a></td>
+
+<td>
+<table BORDER=0 >
+<tr>
+<td>VMS</td>
+</tr>
+
+<tr>
+<td>__VMS</td>
+</tr>
+</table>
+</td>
+
+<td>
+<table BORDER=0 WIDTH="100%" >
+<tr>
+<td>__VMS_VER = VVRREPPTT</td>
+
+<td>VV = Version</td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>RR = Revision</td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>E = Edit number</td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>PP = Patch (01 = A, ... 26 = Z)</td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>TT = Type (22 = official)</td>
+</tr>
+</table>
+
+<p>Examples
+<br>&nbsp;
+<table WIDTH="100%" >
+<tr>
+<th>VMS</th>
+
+<th>__VMS_VER</th>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>6.1</td>
+
+<td ALIGN=CENTER>60100022</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>6.2</td>
+
+<td ALIGN=CENTER>60200022</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>6.2-1I</td>
+
+<td ALIGN=CENTER>60210922</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.microsoft.com/windows/" target="_top">Win32 API</a></td>
+
+<td>
+<table BORDER=0 >
+<tr>
+<td>_WIN32</td>
+</tr>
+
+<tr>
+<td>__WIN32__</td>
+</tr>
+
+<tr>
+<td>__TOS_WIN__</td>
+</tr>
+</table>
+</td>
+
+<td>&nbsp;</td>
+</tr>
+</table>
+</blockquote>
+
+<h2>
+Operating Environments</h2>
+
+<blockquote>&nbsp;
+<table BORDER >
+<tr>
+<th>Name</th>
+
+<th>Macro</th>
+
+<th>Comment</th>
+</tr>
+
+<tr VALIGN=TOP>
+<td>BSD</td>
+
+<td>__FreeBSD__
+<br>__NetBSD__
+<br>__OpenBSD__
+<br>__bsdi__
+<br>_BSD_SOURCE
+<br>_SYSTYPE_BSD [__DECC]</td>
+
+<td>The following macros have to been included from &lt;sys/param.h>&nbsp;
+<ul>
+<li>
+BSD</li>
+
+<li>
+BSD4_2</li>
+
+<li>
+BSD4_3</li>
+
+<li>
+BSD4_4</li>
+</ul>
+Examples
+<br>&nbsp;
+<table WIDTH="100%" >
+<tr>
+<th>Version</th>
+
+<th>BSD</th>
+
+<th>Macro</th>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>4.3 Net2</td>
+
+<td ALIGN=CENTER>199103</td>
+
+<td ALIGN=CENTER></td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>4.4</td>
+
+<td ALIGN=CENTER>199306</td>
+
+<td ALIGN=CENTER>BSD4_4</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>4.4BSD-Lite2</td>
+
+<td ALIGN=CENTER>199506</td>
+
+<td ALIGN=CENTER></td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.caldera.com/developers/devspecs/" target="_top">SVR4</a></td>
+
+<td>__sysv__
+<br>__SVR4
+<br>__svr4__
+<br>_SVR4_SOURCE
+<br>_SYSTYPE_SVR4 [__sgi]</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td>Unix</td>
+
+<td>unix
+<br>__unix__
+<br>__unix</td>
+
+<td>Generic macros, of which at least one is defined on a Unix compliant
+platform.
+<p>Please note that not all compilers defines these macros, e.g. the xlC
+or the Compaq C/C++ compiler, so it may be better to use the POSIX or X/Open
+standard macros instead.</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.wipro.com/uwin/" target="_top">U/Win</a></td>
+
+<td>_UWIN</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.bristol.com/windu/" target="_top">Wind/U</a></td>
+
+<td>_WINDU_SOURCE</td>
+
+<td>
+<table WIDTH="100%" >
+<tr>
+<th>Wind/U</th>
+
+<th>_WINDU_SOURCE</th>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>3.1.2</td>
+
+<td ALIGN=CENTER>0x030102</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</blockquote>
+
+<hr>
+$Id: $
+
+</body>
+</html>

@@ -1,0 +1,518 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="generator" content="DocBook XSL Stylesheets V1.40">
+   <meta name="GENERATOR" content="Mozilla/4.51 [en] (X11; I; Linux 2.2.7 i686) [Netscape]">
+   <title>Pre-defined C/C++ Compiler Macros</title>
+</head>
+<body>
+
+<center>
+<h1>
+Pre-defined C/C++ Compiler Macros</h1></center>
+
+<table ALIGN=CENTER WIDTH="80%">
+<tr>
+<td ALIGN=CENTER><a href="predef.html">Index</a></td>
+
+<td ALIGN=CENTER><a href="prestd.html">Standards</a></td>
+
+<td ALIGN=CENTER><a href="precomp.html">Compilers</a></td>
+
+<td ALIGN=CENTER><a href="preos.html">Operating Systems</a></td>
+
+<td ALIGN=CENTER><b>Architecture</b></td>
+</tr>
+</table>
+
+<hr>
+
+<h2>
+Hardware Architectures</h2>
+Incomplete.
+<blockquote>&nbsp;
+<table BORDER >
+<tr>
+<th>Name</th>
+
+<th>Macro</th>
+
+<th>Comment</th>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.samsungelectronics.com/semiconductors/Alpha_CPU/" target="_top">Alpha</a></td>
+
+<td>
+<table BORDER=0 WIDTH="100%" >
+<tr>
+<td>__alpha__</td>
+
+<td>[__GNUC__]</td>
+</tr>
+
+<tr>
+<td>__alpha</td>
+
+<td>[__DECCXX]</td>
+</tr>
+
+<tr>
+<td>_M_ALPHA</td>
+
+<td>[_MSC_VER]</td>
+</tr>
+</table>
+</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.intel.com/products/browse/processor.htm" target="_top">Intel
+x86</a></td>
+
+<td>
+<table BORDER=0 WIDTH="100%" >
+<tr>
+<td>i386, __i386__</td>
+
+<td>[__GNUC__]</td>
+</tr>
+
+<tr>
+<td>i386, __i386</td>
+
+<td>[__SUNPRO_C]</td>
+</tr>
+
+<tr>
+<td>_M_IX86</td>
+
+<td>[_MSC_VER]</td>
+</tr>
+
+<tr>
+<td>_M_IX86</td>
+
+<td>[__ICC]</td>
+</tr>
+
+<tr>
+<td>_X86_</td>
+
+<td>[__MINGW32__]</td>
+</tr>
+
+<tr>
+<td>__THW_INTEL</td>
+
+<td>[_AIX]</td>
+</tr>
+</table>
+</td>
+
+<td>Examples
+<br>&nbsp;
+<table WIDTH="100%" >
+<tr>
+<th>CPU</th>
+
+<th>_M_IX86 value</th>
+
+<th>Macro</th>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>80386</td>
+
+<td ALIGN=CENTER>300</td>
+
+<td ALIGN=CENTER></td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>80486</td>
+
+<td ALIGN=CENTER>400</td>
+
+<td ALIGN=CENTER></td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>Pentium</td>
+
+<td ALIGN=CENTER>500</td>
+
+<td ALIGN=CENTER></td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>Pentium Pro/II</td>
+
+<td ALIGN=CENTER>600</td>
+
+<td ALIGN=CENTER>_ARCH_PENTIUM2</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td>Intel Itanium</td>
+
+<td>
+<table BORDER=0 WIDTH="100%" >
+<tr>
+<td>__ia64__</td>
+
+<td>[__GNUC__]</td>
+</tr>
+
+<tr>
+<td>_IA64</td>
+
+<td>[__GNUC__]</td>
+</tr>
+
+<tr>
+<td>__IA64__</td>
+
+<td>[__GNUC__]</td>
+</tr>
+
+<tr>
+<td>_M_IA64</td>
+
+<td>[__ICC]</td>
+</tr>
+
+</table>
+</td>
+
+<td>Examples
+<br>&nbsp;
+<table WIDTH="100%" >
+<tr>
+<th>CPU</th>
+
+<th>_M_IA64 value</th>
+</tr>
+
+<tr>
+<td ALIGN=CENTER></td>
+
+<td ALIGN=CENTER>64100</td>
+</tr>
+</table>
+</td>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.mips.com/" target="_top">MIPS</a></td>
+
+<td>
+<table BORDER=0 WIDTH="100%" >
+<tr>
+<td>__mips__</td>
+
+<td>[__GNUC__]</td>
+</tr>
+
+<tr>
+<td>__mips</td>
+
+<td>[__sgi]</td>
+</tr>
+
+<tr>
+<td>__MIPS__</td>
+
+<td>[__MWERKS__]</td>
+</tr>
+</table>
+</td>
+
+<td>The value of the __mips macro indicates the MIPS ISA (Instruction Set
+Architecture) level.&nbsp;
+<p>Examples
+<br>&nbsp;
+<table WIDTH="100%" >
+<tr>
+<th>CPU</th>
+
+<th>__mips value</th>
+
+<th>Macro</th>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>R2000, R3000</td>
+
+<td ALIGN=CENTER>1</td>
+
+<td ALIGN=CENTER></td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>R6000</td>
+
+<td ALIGN=CENTER>2</td>
+
+<td ALIGN=CENTER>__MIPS_ISA2__</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>R4400</td>
+
+<td ALIGN=CENTER>3</td>
+
+<td ALIGN=CENTER>__MIPS_ISA3__</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>R8000, R10000</td>
+
+<td ALIGN=CENTER>4</td>
+
+<td ALIGN=CENTER>__MIPS_ISA4__</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.cpus.hp.com/technical_references/parisc.shtml" target="_top">PA
+RISC</a></td>
+
+<td>
+<table BORDER=0 WIDTH="100%" >
+<tr>
+<td>__hppa__</td>
+
+<td>[__GNUC__]</td>
+</tr>
+
+<tr>
+<td>__hppa</td>
+
+<td></td>
+</tr>
+</table>
+</td>
+
+<td>Examples
+<br>&nbsp;
+<table WIDTH="100%" >
+<tr>
+<th>CPU</th>
+
+<th>Macro</th>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>PA RISC 1.0</td>
+
+<td ALIGN=CENTER>_PA_RISC1_0</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>PA RISC 1.1</td>
+
+<td ALIGN=CENTER>_PA_RISC1_1</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>PA RISC 2.0</td>
+
+<td ALIGN=CENTER>_PA_RISC2_0, __RISC2_0__</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.ibm.com/chips/products/powerpc/" target="_top">PowerPC</a></td>
+
+<td>
+<table BORDER=0 WIDTH="100%" >
+<tr>
+<td>__powerpc</td>
+
+<td>[__GNUC__]</td>
+</tr>
+
+<tr>
+<td>__powerpc__</td>
+
+<td>[__GNUC__]</td>
+</tr>
+
+<tr>
+<td>__POWERPC__</td>
+
+<td>[__GNUC__]</td>
+</tr>
+
+<tr>
+<td>__ppc__</td>
+
+<td>[__GNUC__]</td>
+</tr>
+
+<tr>
+<td>_M_PPC</td>
+
+<td>[_MSC_VER]</td>
+</tr>
+
+<tr>
+<td>__PPC</td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>__PPC__</td>
+
+<td></td>
+</tr>
+</table>
+</td>
+
+<td>Examples
+<br>&nbsp;
+<table WIDTH="100%" >
+<tr>
+<th>CPU</th>
+
+<th>_M_PPC value</th>
+
+<th>Macro</th>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>PowerPC 601</td>
+
+<td ALIGN=CENTER>601</td>
+
+<td ALIGN=CENTER>__ppc601__</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>PowerPC 603</td>
+
+<td ALIGN=CENTER>603</td>
+
+<td ALIGN=CENTER>__ppc603__</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>PowerPC 604</td>
+
+<td ALIGN=CENTER>604</td>
+
+<td ALIGN=CENTER>__ppc604__</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>PowerPC 620</td>
+
+<td ALIGN=CENTER>620</td>
+
+<td ALIGN=CENTER></td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.rs6000.ibm.com/" target="_top">RS/6000</a></td>
+
+<td>
+<table BORDER=0 WIDTH="100%" >
+<tr>
+<td>__THW_RS6000</td>
+
+<td>[_AIX]</td>
+</tr>
+
+<tr>
+<td>_IBMR2</td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>_POWER</td>
+
+<td>[_AIX]</td>
+</tr>
+
+<tr>
+<td>_ARCH_PWR</td>
+
+<td>[_AIX]</td>
+</tr>
+
+<tr>
+<td>_ARCH_PWR2</td>
+
+<td>[_AIX]</td>
+</tr>
+</table>
+</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td><a href="http://www.sun.com/microelectronics/products/microproc.html" target="_top">SPARC</a></td>
+
+<td>
+<table BORDER=0 WIDTH="100%" >
+<tr>
+<td>__sparc__</td>
+
+<td>[__GNUC__]</td>
+</tr>
+
+<tr>
+<td>sparc, __sparc</td>
+
+<td>[__SUNPRO_C]</td>
+</tr>
+</table>
+</td>
+
+<td>Examples
+<br>&nbsp;
+<table WIDTH="100%" >
+<tr>
+<th>CPU</th>
+
+<th>Macro</th>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>SPARC v8 (SuperSPARC)</td>
+
+<td ALIGN=CENTER>__sparcv8</td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER>SPARC v9 (UltraSPARC)</td>
+
+<td ALIGN=CENTER>__sparcv9</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</blockquote>
+
+<hr>
+$Id: $
+
+</body>
+</html>
