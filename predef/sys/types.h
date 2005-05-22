@@ -1,6 +1,6 @@
 /*************************************************************************
  *
- * $Id: types.h,v 1.1 2003/08/03 17:55:44 breese Exp $
+ * $Id: types.h,v 1.1 2003/08/03 18:03:52 breese Exp $
  *
  * Copyright (C) 2003 Bjorn Reese <breese@users.sourceforge.net>
  *
@@ -22,7 +22,7 @@
 # include <predef/predef.h>
 #endif
 
-#if defined(PREDEF_STANDARD_XPG3) || defined(PREDEF_STANDARD_POSIX1990)
+#if defined(PREDEF_STANDARD_XOPEN_1989) || defined(PREDEF_STANDARD_POSIX_1990)
 # define PREDEF_HEADER_SYS_TYPES
 # include <sys/types.h>
 #endif

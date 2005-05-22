@@ -1,6 +1,6 @@
 /*************************************************************************
  *
- * $Id: stdio.h,v 1.1 2003/08/03 17:55:44 breese Exp $
+ * $Id: stdio.h,v 1.1 2003/08/03 18:03:52 breese Exp $
  *
  * Copyright (C) 2003 Bjorn Reese <breese@users.sourceforge.net>
  *
@@ -25,17 +25,17 @@
 #define PREDEF_HEADER_STDIO
 #include <stdio.h>
 
-#if defined(PREDEF_STANDARD_XPG3)
+#if defined(PREDEF_STANDARD_XOPEN_1989)
 # define PREDEF_FUNC_TEMPNAM
 #endif
-#if defined(PREDEF_STANDARD_XPG3) || defined(PREDEF_STANDARD_POSIX1990)
+#if defined(PREDEF_STANDARD_XOPEN_1989) || defined(PREDEF_STANDARD_POSIX_1990)
 # define PREDEF_FUNC_PCLOSE
 # define PREDEF_FUNC_POPEN
 #endif
-#if defined(PREDEF_STANDARD_XPG4) || defined(PREDEF_STANDARD_POSIX1992)
+#if defined(PREDEF_STANDARD_XOPEN_1992) || defined(PREDEF_STANDARD_POSIX_1992)
 # define PREDEF_FUNC_GETOPT
 #endif
-#if defined(PREDEF_STANDARD_UNIX98)
+#if defined(PREDEF_STANDARD_XOPEN_1998)
 # define PREDEF_FUNC_FLOCKFILE
 # define PREDEF_FUNC_FSEEKO
 # define PREDEF_FUNC_FTELLO
@@ -46,11 +46,11 @@
 # define PREDEF_FUNC_PUTC_UNLOCKED
 # define PREDEF_FUNC_PUTCHAR_UNLOCKED
 #endif
-#if defined(PREDEF_STANDARD_C99) || defined(PREDEF_STANDARD_UNIX98)
+#if defined(PREDEF_STANDARD_C99) || defined(PREDEF_STANDARD_XOPEN_1998)
 # define PREDEF_FUNC_SNPRINTF
 # define PREDEF_FUNC_VSNPRINTF
 #endif
-#if defined(PREDEF_STANDARD_C99) || defined(PREDEF_STANDARD_UNIX01)
+#if defined(PREDEF_STANDARD_C99) || defined(PREDEF_STANDARD_XOPEN_2003)
 # define PREDEF_FUNC_VFSCANF
 # define PREDEF_FUNC_VSCANF
 # define PREDEF_FUNC_VSSCANF

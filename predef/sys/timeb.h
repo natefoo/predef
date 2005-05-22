@@ -1,6 +1,6 @@
 /*************************************************************************
  *
- * $Id: timeb.h,v 1.1 2003/08/03 17:55:44 breese Exp $
+ * $Id: timeb.h,v 1.1 2003/08/03 18:03:52 breese Exp $
  *
  * Copyright (C) 2003 Bjorn Reese <breese@users.sourceforge.net>
  *
@@ -22,7 +22,7 @@
 # include <predef/predef.h>
 #endif
 
-#if defined(PREDEF_STANDARD_UNIX95) \
+#if defined(PREDEF_STANDARD_XOPEN_1995) \
   || (defined(PREDEF_LIBC_GNU) && (PREDEF_LIBC_GNU >= 20000))
 # define PREDEF_HEADER_SYS_TIMEB
 # include <sys/timeb.h>

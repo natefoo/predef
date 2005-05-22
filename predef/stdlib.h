@@ -1,6 +1,6 @@
 /*************************************************************************
  *
- * $Id: stdlib.h,v 1.1 2003/08/03 17:55:44 breese Exp $
+ * $Id: stdlib.h,v 1.1 2003/08/03 18:03:52 breese Exp $
  *
  * Copyright (C) 2003 Bjorn Reese <breese@users.sourceforge.net>
  *
@@ -25,7 +25,7 @@
 #define PREDEF_HEADER_STDLIB
 #include <stdlib.h>
 
-#if defined(PREDEF_STARDARD_XPG4)
+#if defined(PREDEF_STARDARD_XOPEN_1992)
 # define PREDEF_FUNC_DRAND48
 # define PREDEF_FUNC_ERAND48
 # define PREDEF_FUNC_JRAND48
@@ -37,7 +37,7 @@
 # define PREDEF_FUNC_SEED48
 # define PREDEF_FUNC_SRAND48
 #endif
-#if defined(PREDEF_STARDARD_UNIX95)
+#if defined(PREDEF_STARDARD_XOPEN_1995)
 # define PREDEF_FUNC_A64L
 # define PREDEF_FUNC_ECVT
 # define PREDEF_FUNC_FCVT
@@ -55,10 +55,10 @@
 # define PREDEF_FUNC_SRANDOM
 # define PREDEF_FUNC_UNLOCKPT
 #endif
-#if defined(PREDEF_STARDARD_UNIX98)
+#if defined(PREDEF_STARDARD_XOPEN_1998)
 # define PREDEF_FUNC_RAND_R
 #endif
-#if defined(PREDEF_STANDARD_C99) || defined(PREDEF_STANDARD_UNIX01)
+#if defined(PREDEF_STANDARD_C99) || defined(PREDEF_STANDARD_XOPEN_2003)
 # define PREDEF_FUNC_C__EXIT /* _Exit() */
 # define PREDEF_FUNC_ATOLL
 # define PREDEF_FUNC_LLABS

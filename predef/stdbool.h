@@ -1,6 +1,6 @@
 /*************************************************************************
  *
- * $Id: stdbool.h,v 1.1 2003/08/03 17:55:44 breese Exp $
+ * $Id: stdbool.h,v 1.1 2003/08/03 18:03:52 breese Exp $
  *
  * Copyright (C) 2003 Bjorn Reese <breese@users.sourceforge.net>
  *
@@ -22,9 +22,9 @@
 # include <predef/predef.h>
 #endif
 
-#if defined(PREDEF_STANDARD_C99) || defined(PREDEF_STANDARD_UNIX01)
+#if defined(PREDEF_STANDARD_C99) || defined(PREDEF_STANDARD_XOPEN_2003)
 # define PREDEF_HEADER_STDBOOL
-# include <stdlib.h>
+# include <stdbool.h>
 #endif
 
 #endif /* PREDEF_STDBOOL_H */

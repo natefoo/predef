@@ -1,6 +1,6 @@
 /*************************************************************************
  *
- * $Id: dlfcn.h,v 1.1 2003/08/03 17:55:44 breese Exp $
+ * $Id: dlfcn.h,v 1.1 2003/08/03 18:03:52 breese Exp $
  *
  * Copyright (C) 2003 Bjorn Reese <breese@users.sourceforge.net>
  *
@@ -22,7 +22,7 @@
 # include <predef/predef.h>
 #endif
 
-#if defined(PREDEF_STANDARD_UNIX98) \
+#if defined(PREDEF_STANDARD_POSIX_1998) \
   || (defined(PREDEF_LIBC_GNU) && (PREDEF_LIBC_GNU >= 20000))
 # define PREDEF_HEADER_DLFCN
 # include <dlfcn.h>

@@ -1,6 +1,6 @@
 /*************************************************************************
  *
- * $Id: ctype.h,v 1.1 2003/08/03 17:55:44 breese Exp $
+ * $Id: ctype.h,v 1.1 2003/08/03 18:03:52 breese Exp $
  *
  * Copyright (C) 2003 Bjorn Reese <breese@users.sourceforge.net>
  *
@@ -25,11 +25,9 @@
 #define PREDEF_HEADER_CTYPE
 #include <ctype.h>
 
-#if defined(PREDEF_STANDARD_XPG3)
+#if defined(PREDEF_STANDARD_XOPEN_1989)
 # define PREDEF_FUNC__TOLOWER
 # define PREDEF_FUNC__TOUPPER
-#endif
-#if defined(PREDEF_STANDARD_XPG3) || defined(PREDEF_STANDARD_UNIX95)
 # define PREDEF_FUNC_ISASCII
 # define PREDEF_FUNC_TOASCII
 #endif

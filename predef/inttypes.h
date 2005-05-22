@@ -1,6 +1,6 @@
 /*************************************************************************
  *
- * $Id: inttypes.h,v 1.1 2003/08/03 17:55:44 breese Exp $
+ * $Id: inttypes.h,v 1.1 2003/08/03 18:03:52 breese Exp $
  *
  * Copyright (C) 2003 Bjorn Reese <breese@users.sourceforge.net>
  *
@@ -23,7 +23,7 @@
 #endif
 
 #if defined(PREDEF_STANDARD_C99) \
- || defined(PREDEF_STANDARD_UNIX98) \
+ || defined(PREDEF_STANDARD_XOPEN_1998) \
  || (defined(PREDEF_LIBC_GNU) && PREDEF_LIBC_GNU >= 20100)
 # define PREDEF_HEADER_INTTYPES
 # include <inttypes.h>

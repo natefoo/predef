@@ -1,6 +1,6 @@
 /*************************************************************************
  *
- * $Id: string.h,v 1.1 2003/08/03 17:55:44 breese Exp $
+ * $Id: string.h,v 1.1 2003/08/03 18:03:52 breese Exp $
  *
  * Copyright (C) 2003 Bjorn Reese <breese@users.sourceforge.net>
  *
@@ -25,14 +25,16 @@
 #define PREDEF_HEADER_STRING
 #include <string.h>
 
-#if defined(PREDEF_STARDARD_XPG3) || defined(PREDEF_LIBC_WINDOWS)
+#if defined(PREDEF_STARDARD_XOPEN_1989) \
+ || defined(PREDEF_LIBC_WINDOWS)
 # define PREDEF_FUNC_MEMCCPY
 #endif
-#if defined(PREDEF_STARDARD_UNIX95) || defined(PREDEF_LIBC_WINDOWS) \
+#if defined(PREDEF_STARDARD_XOPEN_1995) \
+ || defined(PREDEF_LIBC_WINDOWS) \
  || (defined(PREDEF_LIBC_VMS) && (PREDEF_LIBC_VMS >= 70000000))
 # define PREDEF_FUNC_STRDUP
 #endif
-#if defined(PREDEF_STARDARD_UNIX98)
+#if defined(PREDEF_STARDARD_XOPEN_1998)
 # define PREDEF_FUNC_STRTOK_R
 #endif
 

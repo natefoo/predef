@@ -1,6 +1,6 @@
 /*************************************************************************
  *
- * $Id: unistd.h,v 1.1 2003/08/03 17:55:44 breese Exp $
+ * $Id: unistd.h,v 1.1 2003/08/03 18:03:52 breese Exp $
  *
  * Copyright (C) 2003 Bjorn Reese <breese@users.sourceforge.net>
  *
@@ -22,7 +22,7 @@
 # include <predef/predef.h>
 #endif
 
-#if defined(PREDEF_STANDARD_XPG3) || defined(PREDEF_STANDARD_POSIX1990)
+#if defined(PREDEF_STANDARD_XOPEN_1989) || defined(PREDEF_STANDARD_POSIX_1990)
 # define PREDEF_HEADER_UNISTD
 # include <unistd.h>
 
@@ -72,18 +72,18 @@
 # define PREDEF_FUNC_UNLINK
 # define PREDEF_FUNC_WRITE
 
-# if defined(PREDEF_STANDARD_XPG4)
+# if defined(PREDEF_STANDARD_XOPEN_1992)
 #  define PREDEF_FUNC_NICE
 #  define PREDEF_FUNC_SWAB
 # endif
 
-# if defined(PREDEF_STANDARD_XPG4) || defined(PREDEF_STANDARD_POSIX1992)
+# if defined(PREDEF_STANDARD_XOPEN_1992) || defined(PREDEF_STANDARD_POSIX_1992)
 #  define PREDEF_FUNC_CONFSTR
 #  define PREDEF_FUNC_FSYNC
 #  define PREDEF_FUNC_GETOPT
 # endif
 
-# if defined(PREDEF_STANDARD_UNIX95)
+# if defined(PREDEF_STANDARD_XOPEN_1995)
 #  define PREDEF_FUNC_FCHDIR
 #  define PREDEF_FUNC_FCHMOD
 #  define PREDEF_FUNC_GETHOSTID
@@ -105,15 +105,15 @@
 #  define PREDEF_FUNC_VFORK
 # endif
 
-# if defined(PREDEF_STANDARD_UNIX95) || defined(PREDEF_STANDARD_POSIX1992)
+# if defined(PREDEF_STANDARD_XOPEN_1995) || defined(PREDEF_STANDARD_POSIX_1992)
 #  define PREDEF_FUNC_FTRUNCATE
 # endif
 
-# if defined(PREDEF_STANDARD_UNIX98) || defined(PREDEF_STANDARD_POSIX1993)
+# if defined(PREDEF_STANDARD_XOPEN_1998) || defined(PREDEF_STANDARD_POSIX_1993)
 #  define PREDEF_FUNC_FDATASYNC
 # endif
 
-# if defined(PREDEF_STANDARD_UNIX98)
+# if defined(PREDEF_STANDARD_XOPEN_1998)
 #  define PREDEF_FUNC_GETLOGIN_R
 #  define PREDEF_FUNC_PREAD
 #  define PREDEF_FUNC_PWRITE

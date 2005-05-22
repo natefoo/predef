@@ -1,6 +1,6 @@
 /*************************************************************************
  *
- * $Id: dirent.h,v 1.1 2003/08/03 17:55:44 breese Exp $
+ * $Id: dirent.h,v 1.1 2003/08/03 18:03:52 breese Exp $
  *
  * Copyright (C) 2003 Bjorn Reese <breese@users.sourceforge.net>
  *
@@ -22,18 +22,18 @@
 # include <predef/predef.h>
 #endif
 
-#if defined(PREDEF_STANDARD_XPG3) || defined(PREDEF_STANDARD_POSIX1990)
+#if defined(PREDEF_STANDARD_XOPEN_1989) || defined(PREDEF_STANDARD_POSIX_1990)
 # define PREDEF_HEADER_DIRENT
 # include <dirent.h>
 # define PREDEF_FUNC_CLOSEDIR
 # define PREDEF_FUNC_OPENDIR
 # define PREDEF_FUNC_READDIR
 # define PREDEF_FUNC_REWINDDIR
-# if defined(PREDEF_STANDARD_XPG3) || defined(PREDEF_STANDARD_UNIX95)
+# if defined(PREDEF_STANDARD_XOPEN_1989) || defined(PREDEF_STANDARD_POSIX_1995)
 #  define PREDEF_FUNC_SEEKDIR
 #  define PREDEF_FUNC_TELLDIR
 # endif
-# if defined(PREDEF_STANDARD_UNIX98) \
+# if defined(PREDEF_STANDARD_POSIX_1998) \
   || (defined(PREDEF_LIBC_GNU) && (PREDEF_LIBC_GNU >= 20000) \
       && (defined(__USE_POSIX) || defined(__USE_MISC)))
 #  define PREDEF_FUNC_READDIR_R
