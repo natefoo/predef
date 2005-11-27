@@ -1,6 +1,6 @@
 /*************************************************************************
  *
- * $Id: $
+ * $Id: standard.h,v 1.1 2005/11/27 14:03:10 breese Exp $
  *
  * Copyright (C) 2005 Bjorn Reese <breese@users.sourceforge.net>
  *
@@ -26,41 +26,41 @@
  * C Standards
  */
 
-#define PREDEF_VERSION_C89 198900L
-#define PREDEF_VERSION_C90 199000L
-#define PREDEF_VERSION_C94 199409L
-#define PREDEF_VERSION_C99 199901L
+#define PREDEF_VERSION_C_1989 198900L
+#define PREDEF_VERSION_C_1990 199000L
+#define PREDEF_VERSION_C_1994 199409L
+#define PREDEF_VERSION_C_1999 199901L
 
 #if defined(__STDC_VERSION__)
 # if (__STDC_VERSION__ > 1)
 #  define PREDEF_STANDARD_C __STDC_VERSION__
 # else
 #  if (PREDEF_COMPILER_SUNPRO >= 0x420)
-#   define PREDEF_STANDARD_C PREDEF_VERSION_C94
+#   define PREDEF_STANDARD_C PREDEF_VERSION_C_1994
 #  else
-#   define PREDEF_STANDARD_C PREDEF_VERSION_C90
+#   define PREDEF_STANDARD_C PREDEF_VERSION_C_1990
 #  endif
 # endif
 #else
 # if defined(__STDC__) \
   || defined(_MSC_EXTENSIONS) \
   || defined(PREDEF_COMPILER_BORLAND)
-#  define PREDEF_STANDARD_C PREDEF_VERSION_C89
+#  define PREDEF_STANDARD_C PREDEF_VERSION_C_1989
 # endif
 #endif
 
 #if defined(PREDEF_STANDARD_C)
-# if (PREDEF_STANDARD_C >= PREDEF_VERSION_C89)
-#  define PREDEF_STANDARD_C89
+# if (PREDEF_STANDARD_C >= PREDEF_VERSION_C_1989)
+#  define PREDEF_STANDARD_C_1989
 # endif
-# if (PREDEF_STANDARD_C >= PREDEF_VERSION_C90)
-#  define PREDEF_STANDARD_C90
+# if (PREDEF_STANDARD_C >= PREDEF_VERSION_C_1990)
+#  define PREDEF_STANDARD_C_1990
 # endif
-# if (PREDEF_STANDARD_C >= PREDEF_VERSION_C94)
-#  define PREDEF_STANDARD_C94
+# if (PREDEF_STANDARD_C >= PREDEF_VERSION_C_1994)
+#  define PREDEF_STANDARD_C_1994
 # endif
-# if (PREDEF_STANDARD_C >= PREDEF_VERSION_C99)
-#  define PREDEF_STANDARD_C99
+# if (PREDEF_STANDARD_C >= PREDEF_VERSION_C_1999)
+#  define PREDEF_STANDARD_C_1999
 # endif
 #endif
 
@@ -68,7 +68,7 @@
  * C++ Standards
  */
 
-#define PREDEF_VERSION_CXX98 199711L
+#define PREDEF_VERSION_CXX_1998 199711L
 
 #if defined(__cplusplus)
 # if (__cplusplus == 1)
@@ -79,8 +79,8 @@
 #endif
 
 #if defined(PREDEF_STANDARD_CXX)
-# if (PREDEF_STANDARD_CXX >= PREDEF_VERSION_CXX98)
-#  define PREDEF_STANDARD_CXX98
+# if (PREDEF_STANDARD_CXX >= PREDEF_VERSION_CXX_1998)
+#  define PREDEF_STANDARD_CXX_1998
 # endif
 #endif
 

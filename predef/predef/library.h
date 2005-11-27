@@ -1,6 +1,6 @@
 /*************************************************************************
  *
- * $Id: $
+ * $Id: library.h,v 1.1 2005/11/27 14:03:10 breese Exp $
  *
  * Copyright (C) 2005 Bjorn Reese <breese@users.sourceforge.net>
  *
@@ -35,8 +35,8 @@
  * Although the Metrowerks compiler supports C99, the Carbon library
  * does not contain all C99 functions.
  */
-# if defined(PREDEF_STANDARD_C99)
-#  undef PREDEF_STANDARD_C99
+# if defined(PREDEF_STANDARD_C_1999)
+#  undef PREDEF_STANDARD_C_1999
 # endif
 #endif
 
@@ -77,8 +77,8 @@
  * it has been accurately determined what version of the library
  * supports C99.
  */
-#  if defined(PREDEF_STANDARD_C99)
-#   undef PREDEF_STANDARD_C99
+#  if defined(PREDEF_STANDARD_C_1999)
+#   undef PREDEF_STANDARD_C_1999
 #  endif
 # endif
 #endif

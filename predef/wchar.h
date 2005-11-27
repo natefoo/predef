@@ -1,6 +1,6 @@
 /*************************************************************************
  *
- * $Id: wchar.h,v 1.1 2003/08/03 18:03:52 breese Exp $
+ * $Id: wchar.h,v 1.2 2005/05/22 11:50:58 breese Exp $
  *
  * Copyright (C) 2003 Bjorn Reese <breese@users.sourceforge.net>
  *
@@ -22,7 +22,7 @@
 # include <predef/predef.h>
 #endif
 
-#if defined(PREDEF_STANDARD_C94) || defined(PREDEF_STANDARD_XOPEN_1992)
+#if defined(PREDEF_STANDARD_C_1994) || defined(PREDEF_STANDARD_XOPEN_1992)
 # define PREDEF_HEADER_WCHAR
 # include <wchar.h>
 
@@ -80,7 +80,7 @@
 #  define PREDEF_FUNC_WCWIDTH
 # endif
 
-# if defined(PREDEF_STANDARD_C94) || defined(PREDEF_STANDARD_XPEN_1998)
+# if defined(PREDEF_STANDARD_C_1994) || defined(PREDEF_STANDARD_XPEN_1998)
 #  define PREDEF_FUNC_BTOWC
 #  define PREDEF_FUNC_FWIDE
 #  define PREDEF_FUNC_FWPRINTF
@@ -105,7 +105,7 @@
 #  define PREDEF_FUNC_WSCANF
 # endif
 
-# if defined(PREDEF_STANDARD_C99) || defined(PREDEF_STANDARD_XOPEN_2003)
+# if defined(PREDEF_STANDARD_C_1999) || defined(PREDEF_STANDARD_XOPEN_2003)
 #  define PREDEF_FUNC_VFWSCANF
 #  define PREDEF_FUNC_VSWSCANF
 #  define PREDEF_FUNC_VWSCANF

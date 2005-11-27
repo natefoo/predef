@@ -1,6 +1,6 @@
 /*************************************************************************
  *
- * $Id: stdio.h,v 1.1 2003/08/03 18:03:52 breese Exp $
+ * $Id: stdio.h,v 1.2 2005/05/22 11:50:58 breese Exp $
  *
  * Copyright (C) 2003 Bjorn Reese <breese@users.sourceforge.net>
  *
@@ -46,11 +46,11 @@
 # define PREDEF_FUNC_PUTC_UNLOCKED
 # define PREDEF_FUNC_PUTCHAR_UNLOCKED
 #endif
-#if defined(PREDEF_STANDARD_C99) || defined(PREDEF_STANDARD_XOPEN_1998)
+#if defined(PREDEF_STANDARD_C_1999) || defined(PREDEF_STANDARD_XOPEN_1998)
 # define PREDEF_FUNC_SNPRINTF
 # define PREDEF_FUNC_VSNPRINTF
 #endif
-#if defined(PREDEF_STANDARD_C99) || defined(PREDEF_STANDARD_XOPEN_2003)
+#if defined(PREDEF_STANDARD_C_1999) || defined(PREDEF_STANDARD_XOPEN_2003)
 # define PREDEF_FUNC_VFSCANF
 # define PREDEF_FUNC_VSCANF
 # define PREDEF_FUNC_VSSCANF
