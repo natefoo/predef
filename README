@@ -1,3 +1,6 @@
+These files are work in progress. Contributions can be sent to
+breese@users.sourceforge.net
+
 The include directory and subdirectories contains predef wrappers
 for common system header files.
 
@@ -7,9 +10,16 @@ file, and include the associated system header file. For example,
 instead of including <stdio.h>, you should include <predef/stdio.h>
 which will include <stdio.h> and set various macros.
 
-All wrapper files depends on the <predef/predef.h> file. If single
-files are copied into the distribution of an application, then
-<predef/predef.h> must be copied as well.
+All wrapper files depends on <predef/predef.h> and the associated
+header files directory. If single files are copied into the
+distribution of an application, then the following header files
+must be copied as well:
+
+  <predef/predef.h>
+  <predef/predef/compiler.h>
+  <predef/predef/os.h>
+  <predef/predef/standard.h>
+  <predef/predef/library.h>
 
 Example of use
 --------------
