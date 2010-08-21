@@ -52,6 +52,10 @@
 #   4.1.1  20031130  Greg Roelofs
 #     * Added some GCC-specific "long long" macros (note:  uses defined(),
 #       not ifdef--break into four-level nested block to support K&R compilers)
+#
+#   4.1.2  20100821  Uffe Jakobsen
+#     * Added LC_ALL export to handle a problem with illegal byte sequences in
+#       tr on Darwin.
 
 # parse options, if any (change "if" to "while" if add more options)
 
@@ -67,6 +71,8 @@ while [ $# -ne 0 ]; do
     esac
 done
 
+LC_ALL=C
+export LC_ALL
 
 # print some helpful identifying info for those who collect these things
 
